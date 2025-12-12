@@ -20,13 +20,15 @@ public class MyUserDetailsService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
+        System.out.println(">>> Username received during login: " + username);
 	User user= repo.findByUsername(username);
 	
 	if (user==null) {
 		System.out.println("User 404");
 		throw new UsernameNotFoundException("User 404");
 	}
+        System.out.println(">>> Password stored in DB: " + user.getPassword());
+        System.out.println("UserPrincipal password: " + new UserPrincipal(user).getPassword());
 		 return new UserPrincipal(user);
 	}
 
