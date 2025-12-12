@@ -1,6 +1,9 @@
 package com.telusko.springbootrest.controller;
 
 import java.util.List;
+
+import com.telusko.springbootrest.model.User;
+import com.telusko.springbootrest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,17 +23,22 @@ public class JobRestController {
 	
 	@Autowired
 	private JobService service;
-	
-	
-	
+    @Autowired
+    private UserService userService;
 
-	@GetMapping("jobPosts")
+
+    @GetMapping("jobPosts")
 	public List<JobPost> getAllJobs() {
 		return service.getAllJobs();
 		
 	}
-	
-	
+
+    @PostMapping("/register")
+	public String login(@RequestBody User user) {
+
+        userService.saveUser(user);
+        return "successfully saved new user";
+    }
 	
 	
 	

@@ -40,7 +40,7 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
 		http.csrf(customizer -> customizer.disable())
-				.authorizeHttpRequests(request -> request.anyRequest().authenticated())
+				.authorizeHttpRequests(request -> request.requestMatchers("/register").permitAll().anyRequest().authenticated())
 				.httpBasic(Customizer.withDefaults())
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 

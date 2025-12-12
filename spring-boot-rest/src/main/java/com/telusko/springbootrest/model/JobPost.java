@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class JobPost {
 
-@Id
+    @Id
 	private int postId;
 	private String postProfile; 
 	private String postDesc;

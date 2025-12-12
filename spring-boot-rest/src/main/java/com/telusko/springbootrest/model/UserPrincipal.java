@@ -16,7 +16,7 @@ public class UserPrincipal implements UserDetails{
 	private User user;
 
 	public UserPrincipal(User user) {
-this.user=user;
+        this.user=user;
 	}
 
 	@Override
@@ -44,7 +44,8 @@ this.user=user;
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return true;	}
+		return true;
+	}
 	
 	
 	@Override

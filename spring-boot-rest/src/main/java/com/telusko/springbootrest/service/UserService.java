@@ -12,14 +12,15 @@ import com.telusko.springbootrest.repo.UserRepo;
 @Service
 public class UserService {
 	
-@Autowired
-	private UserRepo repo;
-private BCryptPasswordEncoder encoder=new BCryptPasswordEncoder(12);
+    @Autowired
+    private UserRepo repo;
+    private BCryptPasswordEncoder encoder=new BCryptPasswordEncoder(12);
 
 	public User saveUser(User user) {
+        System.out.println(user.getPassword());
 		user.setPassword(encoder.encode(user.getPassword()));
 		System.out.println(user.getPassword());
-	return repo.save(user) ;
+	    return repo.save(user) ;
 		
 	}
 }
